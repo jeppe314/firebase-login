@@ -1,24 +1,21 @@
-import React from "react"
+import React, { useState } from "react"
 import { createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../firebase"
 
 export const Register = () => {
-  const handleSubmit = (e) => {
+  const [err, setErr] = useState(false)
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const username = e.target[0].value
     const email = e.target[1].value
     const password = e.target[2].value
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user
-        console.log(user)
-      })
-      .catch((error) => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        // ..
-      })
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password)
+      console.log(res.user.email)
+    } catch (err) {
+      setErr(true)
+    }
   }
 
   return (
@@ -30,6 +27,9 @@ export const Register = () => {
           <input type="text" className="email" placeholder="Email" />
           <input type="password" className="password" placeholder="Password" />
           <button>Sign up</button>
+          {err && <p>Something went wrong</p>}
+          <p>Already signed up?</p>
+          <p>Login</p>
         </form>
       </div>
     </div>
