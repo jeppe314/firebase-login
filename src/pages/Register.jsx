@@ -28,8 +28,7 @@ export const Register = () => {
           <input type="password" className="password" placeholder="Password" />
           <button>Sign up</button>
           {err && <p>Something went wrong</p>}
-          <p>Already signed up?</p>
-          <p>Login</p>
+          <p>Already signed up? <span>Login</span></p>
         </form>
       </div>
     </div>
