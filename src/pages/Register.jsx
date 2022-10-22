@@ -1,23 +1,48 @@
 import React, { useState } from "react"
-import { createUserWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../firebase"
+import { useNavigate, Link } from "react-router-dom"
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import { auth, db } from "../firebase"
+import { doc, setDoc } from "firebase/firestore"
 
 export const Register = () => {
   const [err, setErr] = useState(false)
+  const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const username = e.target[0].value
+    const displayName = e.target[0].value
     const email = e.target[1].value
     const password = e.target[2].value
 
     try {
+      //Creates user
       const res = await createUserWithEmailAndPassword(auth, email, password)
-      console.log(res.user.email)
+
+      try {
+        //Updates profile with displayname
+        await updateProfile(res.user, {
+          displayName,
+        })
+        //Create users in firestore
+        await setDoc(doc(db, "users", res.user.uid), {
+          uid: res.user.uid,
+          displayName,
+          email,
+        })
+      } catch (err) {
+        setErr(true)
+      }
+      //Navigates to homepage
+      navigate("/")
     } catch (err) {
       setErr(true)
     }
   }
 
+  // await setDoc(doc(db, "users", res.user.id), {
+  //   name: res.user.displayName,
+  //   email: email,
+  // })
   return (
     <div className="formContainer">
       <div className="formWrapper">
@@ -28,7 +53,9 @@ export const Register = () => {
           <input type="password" className="password" placeholder="Password" />
           <button>Sign up</button>
           {err && <p>Something went wrong</p>}
-          <p>Already signed up? <span>Login</span></p>
+          <p>
+            Already signed up? <Link to="/login">Login</Link>
+          </p>
         </form>
       </div>
     </div>
