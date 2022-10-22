@@ -17,6 +17,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color:white;
 
   button {
     border: none;
@@ -98,7 +99,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    border: 2px solid white;
+    border: 2px dashed white;
     width: 50%;
     height: 50%;
     border-radius: 5px;
