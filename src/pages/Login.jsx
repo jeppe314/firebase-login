@@ -28,7 +28,7 @@ export const Login = () => {
         <form className="form" onSubmit={handleSubmit}>
           <input type="text" className="email" placeholder="Email" />
           <input type="password" className="password" placeholder="Password" />
-          <button type="submit" className="btn loginBtn">Sign in</button>
+          <button type="submit" className="btn login">Sign in</button>
           <p>
             Haven't signed up? <Link to="/register">Register</Link>
           </p>
