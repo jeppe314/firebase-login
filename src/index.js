@@ -7,7 +7,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <AuthContextProvider>
     <React.StrictMode>
-      <h3>Test</h3>
+      <App />
     </React.StrictMode>
   </AuthContextProvider>
 )
