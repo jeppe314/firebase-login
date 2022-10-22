@@ -13,7 +13,7 @@ export const Home = () => {
     <div className="formContainer">
       <div className="homeWrapper">
         <h2>Hi there, {displayName}!</h2>
-        <button onClick={() => signOut(auth)}>Log Out</button>
+        <button onClick={() => signOut(auth)} className="btn logoutBtn">Log Out</button>
       </div>
     </div>
   )

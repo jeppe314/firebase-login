@@ -47,7 +47,7 @@ export const Register = () => {
           <input type="text" className="username" placeholder="Username" />
           <input type="text" className="email" placeholder="Email" />
           <input type="password" className="password" placeholder="Password" />
-          <button>Sign up</button>
+          <button className="btn registerBtn">Sign up</button>
           {err && <p>Something went wrong</p>}
           <p>
             Already signed up? <Link to="/login">Login</Link>
