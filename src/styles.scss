@@ -17,7 +17,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color:white;
+  color: white;
 
   button {
     border: none;
@@ -58,6 +58,11 @@ body {
     gap: 2rem;
     color: white;
     padding: 20px;
+
+    ::placeholder {
+      color: white;
+      opacity:.7;
+    }
 
     .login {
       text-transform: uppercase;
