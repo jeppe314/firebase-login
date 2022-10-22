@@ -39,10 +39,6 @@ export const Register = () => {
     }
   }
 
-  // await setDoc(doc(db, "users", res.user.id), {
-  //   name: res.user.displayName,
-  //   email: email,
-  // })
   return (
     <div className="formContainer">
       <div className="formWrapper">
