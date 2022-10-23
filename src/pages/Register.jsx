@@ -46,7 +46,13 @@ export const Register = () => {
         <form className="form" onSubmit={handleSubmit}>
           <input type="text" className="username" placeholder="Username" />
           <input type="text" className="email" placeholder="Email" />
-          <input type="password" className="password" placeholder="Password" />
+          <input
+            type="password"
+            pattern=".{8,}"
+            title="Password needs to be minumum 8 characters long"
+            className="password"
+            placeholder="Password"
+          />
           <button className="btn registerBtn">Sign up</button>
           {err && <p>Something went wrong</p>}
           <p>
